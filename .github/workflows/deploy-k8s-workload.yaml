@@ -48,7 +48,7 @@ jobs:
           PIP_INDEX_URL: https://${{ env.NODIS_REPOSITORY_NAME }}:${{ github.token }}@pypi.nodis.com.br/simple
       - name: Update workload
         run: |
-          MAESTRO_PARAMETERS="-y"
+          MAESTRO_PARAMETERS="-y --vault-k8s-role-name admin"
           cd ${NODIS_MAESTRO_REPOSITORY}
           helm repo add --force-update ${CHARTS_REPOSITORY_NAME} https://${NODIS_REPOSITORY_NAME}:${GITHUB_TOKEN}@${CHARTS_REPOSITORY_HOST}
           RESOURCE_FILE=`find . -name ${NODIS_PROJECT_NAME}.yaml`
